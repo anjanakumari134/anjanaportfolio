@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anjana Kumari | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0a0a08;--bg2:#111110;--bg3:#1a1a17;
+  --accent:#c8f135;--text:#f0ede6;--text-muted:#6b6b60;--text-sub:#9a9a8a;
+  --border:rgba(255,255,255,0.08);--card:#141412;
+  --pill-bg:rgba(200,241,53,0.12);--pill-text:#c8f135;
+}
+[data-theme="light"]{
+  --bg:#f5f5ee;--bg2:#edede5;--bg3:#e4e4dc;
+  --accent:#5a8a00;--text:#1a1a14;--text-muted:#8a8a7a;--text-sub:#5a5a4a;
+  --border:rgba(0,0,0,0.1);--card:#ffffff;
+  --pill-bg:rgba(90,138,0,0.1);--pill-text:#3a6a00;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background 0.3s,color 0.3s;}
+ 
+.grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:80px 80px;}
+ 
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:60px;background:var(--bg);border-bottom:1px solid var(--border);transition:background 0.3s;}
+.nav-logo{font-weight:600;font-size:1rem;color:var(--accent);letter-spacing:0.05em;text-decoration:none;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.theme-btn{width:36px;height:36px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.2s;}
+.theme-btn:hover{border-color:var(--accent);}
+ 
+/* HERO */
+#home{position:relative;min-height:100vh;display:flex;align-items:center;padding:0 2.5rem;z-index:1;padding-top:60px;}
+.hero-inner{max-width:680px;}
+.avail-tag{display:flex;align-items:center;gap:12px;margin-bottom:2.5rem;}
+.avail-line{width:40px;height:1px;background:var(--accent);}
+.avail-tag span{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,8vw,6.5rem);font-weight:700;line-height:1.0;color:var(--text);margin-bottom:0.3rem;}
+.hero-name .italic{font-style:italic;color:var(--accent);}
+.hero-role{font-size:1.1rem;font-weight:400;color:var(--text-sub);margin:1.2rem 0 1.5rem;display:flex;align-items:center;gap:10px;}
+.hero-role::before{content:'—';color:var(--accent);}
+.hero-desc{font-size:14px;color:var(--text-muted);max-width:480px;line-height:1.8;margin-bottom:2.5rem;font-family:'Courier New',monospace;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2rem;}
+.btn-solid{padding:13px 28px;background:var(--accent);color:#0a0a08;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;transition:opacity 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-solid:hover{opacity:0.85;}
+.btn-outline{padding:12px 28px;background:transparent;color:var(--text);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--border);cursor:pointer;text-decoration:none;transition:border-color 0.2s;}
+.btn-outline:hover{border-color:var(--text);}
+.social-icons{display:flex;gap:10px;}
+.soc{width:40px;height:40px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text-muted);font-size:12px;font-weight:700;transition:all 0.2s;border-radius:4px;}
+.soc:hover{border-color:var(--accent);color:var(--accent);}
+.hero-num{position:absolute;right:2.5rem;bottom:5rem;font-family:'Playfair Display',serif;font-size:clamp(6rem,15vw,12rem);font-weight:700;color:var(--border);line-height:1;user-select:none;letter-spacing:-0.05em;}
+.scroll-hint{position:absolute;bottom:2rem;left:2.5rem;display:flex;align-items:center;gap:12px;}
+.scroll-hint .sh-line{width:40px;height:1px;background:var(--text-muted);}
+.scroll-hint span{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);}
+ 
+/* SECTION BASE */
+.section-wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:5rem 2.5rem;}
+.sec-label{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;}
+.sec-big-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:var(--text);margin-bottom:1rem;}
+.sec-big-title .italic{font-style:italic;color:var(--accent);}
+.sec-divider{height:1px;background:var(--border);margin-bottom:2.5rem;}
+/* old sec-header style kept for sections still using it */
+.sec-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;}
+.sec-num{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.12em;}
+.sec-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--text);}
+.sec-line{flex:1;height:1px;background:var(--border);}
+ 
+/* ABOUT */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.about-bio{font-family:'Courier New',monospace;font-size:14px;color:var(--text-muted);line-height:1.9;}
+.about-bio p{margin-bottom:1.4rem;}
+.about-bio strong{color:var(--text);font-weight:600;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--border);}
+.stat-item{background:var(--card);padding:1.1rem 1.3rem;border-left:2px solid var(--border);}
+.stat-item .stat-label{font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;}
+.stat-item .stat-val{font-size:15px;font-weight:500;color:var(--text);}
+.stat-item .stat-val.open{color:var(--accent);display:flex;align-items:center;gap:7px;}
+.stat-item .stat-val.open::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+ 
+/* ACADEMIC */
+.acad-list{display:flex;flex-direction:column;gap:1rem;}
+.acad-item{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--border);padding:1.8rem 2rem;display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;transition:border-color 0.2s,background 0.2s;}
+.acad-item:hover{border-left-color:var(--accent);background:var(--bg2);}
+.acad-featured{border-left:3px solid var(--accent);border-color:var(--accent);}
+.acad-left{display:flex;flex-direction:column;gap:6px;}
+.acad-item h3{font-size:1rem;font-weight:600;color:var(--text);}
+.acad-inst{font-family:'Courier New',monospace;font-size:13px;color:var(--text-muted);}
+.acad-grade{font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted);}
+.acad-date{font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted);background:var(--bg3);border:1px solid var(--border);padding:5px 14px;border-radius:3px;white-space:nowrap;align-self:flex-start;}
+ 
+/* TECH ARSENAL */
+.arsenal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.arsenal-card{background:var(--card);border:1px solid var(--border);padding:1.4rem 1.6rem;transition:border-color 0.2s;}
+.arsenal-card:hover{border-color:var(--accent);}
+.arsenal-label{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.arsenal-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.ars-pill{font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted);border:1px solid var(--border);padding:5px 14px;transition:border-color 0.2s,color 0.2s;cursor:default;}
+.ars-pill:hover{border-color:var(--accent);color:var(--text);}
+ 
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;border:1px solid var(--border);}
+.proj-card{background:var(--card);padding:2rem;display:flex;flex-direction:column;gap:1rem;transition:background 0.2s;}
+.proj-card:hover{background:var(--bg2);}
+.proj-num{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.1em;}
+.proj-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--text);}
+.proj-card p{font-size:13px;color:var(--text-muted);line-height:1.7;flex:1;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
+.pill{background:var(--pill-bg);color:var(--pill-text);font-size:12px;padding:4px 12px;border-radius:2px;font-weight:500;}
+.pill.neutral{background:var(--bg3);color:var(--text-sub);}
+.gh-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.gh-link:hover{text-decoration:underline;}
+ 
+/* CERTS */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;border:1px solid var(--border);}
+.cert-item{background:var(--card);padding:1.3rem 1.5rem;display:flex;align-items:flex-start;gap:12px;transition:background 0.2s;}
+.cert-item:hover{background:var(--bg2);}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px;}
+.cert-item p{font-size:13.5px;color:var(--text);line-height:1.4;}
+.cert-item span{font-size:11px;color:var(--text-muted);display:block;margin-top:3px;}
+ 
+/* WINS / ACHIEVEMENTS */
+.wins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;border:1px solid var(--border);}
+.win-item{background:var(--card);padding:1.75rem 2rem;display:flex;gap:1rem;align-items:flex-start;transition:background 0.2s;}
+.win-item:hover{background:var(--bg2);}
+.win-icon{font-size:18px;flex-shrink:0;color:var(--accent);line-height:1.4;}
+.win-item p{font-size:14px;color:var(--text-muted);line-height:1.6;}
+ 
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;border:1px solid var(--border);}
+.contact-card{background:var(--card);padding:1.5rem;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--text);transition:background 0.2s;}
+.contact-card:hover{background:var(--bg2);}
+.cc-icon{font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.cc-val{font-size:13.5px;color:var(--text);font-weight:500;word-break:break-all;}
+.cc-label{font-size:11px;color:var(--text-muted);}
+ 
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:12px;color:var(--text-muted);}
+.f-logo{font-weight:600;font-size:0.9rem;color:var(--accent);}
+ 
+@media(max-width:700px){
+  nav{padding:0 1.2rem;}
+  .nav-links{display:none;}
+  #home{padding:0 1.2rem;padding-top:60px;}
+  .section-wrap{padding:3.5rem 1.2rem;}
+  .hero-num{display:none;}
+  .about-wrap{grid-template-columns:1fr;}
+  .arsenal-grid{grid-template-columns:1fr;}
+  footer{padding:1.2rem;}
+}
+@media(min-width:701px) and (max-width:1000px){
+  .arsenal-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+ 
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">AK</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certs">Certs</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+</nav>
+ 
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="avail-tag">
+      <div class="avail-line"></div>
+      <span>Available for opportunities</span>
+    </div>
+    <div class="hero-name">
+      Anjana<br/>
+      Kumari <span class="italic">Dev</span>
+    </div>
+    <div class="hero-role">Full Stack Developer</div>
+    <p class="hero-desc">B.Tech Computer Science student at Lovely Professional University. Building robust, scalable web applications with a passion for clean code and seamless user experiences.</p>
+    <div class="hero-btns">
+      <a href="Anjana_Kumari_Resume.pdf" download class="btn-solid">&#8595; Download Resume</a>
+      <a href="#contact" class="btn-outline">Let's Connect</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://github.com/anjanakumari134" target="_blank" class="soc">GH</a>
+      <a href="http://www.linkedin.com/in/anjana0103/" target="_blank" class="soc">in</a>
+      <a href="mailto:akanjanakumari8@gmail.com" class="soc">@</a>
+      <a href="tel:+919690457855" class="soc">&#9990;</a>
+    </div>
+  </div>
+  <div class="hero-num">01</div>
+  <div class="scroll-hint">
+    <div class="sh-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+ 
+<!-- 01 / ABOUT -->
+<div class="section-wrap" id="about">
+  <div class="sec-label">01 / ABOUT</div>
+  <h2 class="sec-big-title">Who <span class="italic">I Am</span></h2>
+  <div class="sec-divider"></div>
+  <div class="about-wrap">
+    <div class="about-bio">
+      <p>Hey there! I'm <strong>Anjana Kumari</strong>, a passionate full-stack developer and Computer Science student at <strong>Lovely Professional University, Phagwara, Punjab</strong>.</p>
+      <p>I love crafting digital solutions — from invoice management platforms to smart automation tools. Currently honing my skills in <strong>C++, Python, React, Node.js</strong>, and database technologies like <strong>MongoDB</strong> and <strong>MySQL</strong>.</p>
+      <p>Beyond coding, I'm an active competitive programmer who has earned a <strong>4-Star rating on HackerRank in C++</strong> and loves organizing tech events like university Hackathons. I believe in building things that actually solve real-world problems.</p>
+    </div>
+    <div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <div class="stat-label">Location</div>
+          <div class="stat-val">Punjab, India</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">University</div>
+          <div class="stat-val">LPU, Phagwara</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">CGPA</div>
+          <div class="stat-val">6.81 / 10</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Status</div>
+          <div class="stat-val open">Open to Work</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 02 / EDUCATION -->
+<div class="section-wrap" id="education" style="padding-top:0;">
+  <div class="sec-label">02 / EDUCATION</div>
+  <h2 class="sec-big-title">Academic <span class="italic">Background</span></h2>
+  <div class="sec-divider"></div>
+  <div class="acad-list">
+    <div class="acad-item acad-featured">
+      <div class="acad-left">
+        <h3>B.Tech — Computer Science &amp; Engineering</h3>
+        <div class="acad-inst">Lovely Professional University, Phagwara, Punjab</div>
+        <div class="acad-grade">CGPA: 6.81 / 10</div>
+      </div>
+      <div class="acad-date">Aug 2023 – Present</div>
+    </div>
+    <div class="acad-item">
+      <div class="acad-left">
+        <h3>Intermediate — Class XII</h3>
+        <div class="acad-inst">Kendriya Vidyalaya No. 2, Jaipur, Rajasthan</div>
+        <div class="acad-grade">Percentage: 80%</div>
+      </div>
+      <div class="acad-date">Mar 2021 – May 2022</div>
+    </div>
+    <div class="acad-item">
+      <div class="acad-left">
+        <h3>Matriculation — Class X</h3>
+        <div class="acad-inst">Kendriya Vidyalaya No. 2, Jaipur, Rajasthan</div>
+        <div class="acad-grade">Percentage: 87.6%</div>
+      </div>
+      <div class="acad-date">Mar 2019 – May 2020</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 03 / SKILLS -->
+<div class="section-wrap" id="skills" style="padding-top:0;">
+  <div class="sec-label">03 / SKILLS</div>
+  <h2 class="sec-big-title">Tech <span class="italic">Arsenal</span></h2>
+  <div class="sec-divider"></div>
+  <div class="arsenal-grid">
+    <div class="arsenal-card">
+      <div class="arsenal-label">Languages</div>
+      <div style="height:1px;background:var(--border);margin-bottom:1.2rem;"></div>
+      <div class="arsenal-pills">
+        <span class="ars-pill">C++</span><span class="ars-pill">Python</span>
+        <span class="ars-pill">C</span><span class="ars-pill">Java</span><span class="ars-pill">JavaScript</span>
+      </div>
+    </div>
+    <div class="arsenal-card">
+      <div class="arsenal-label">Frameworks</div>
+      <div style="height:1px;background:var(--border);margin-bottom:1.2rem;"></div>
+      <div class="arsenal-pills">
+        <span class="ars-pill">HTML &amp; CSS</span><span class="ars-pill">React</span><span class="ars-pill">Node.js</span>
+      </div>
+    </div>
+    <div class="arsenal-card">
+      <div class="arsenal-label">Tools / Platforms</div>
+      <div style="height:1px;background:var(--border);margin-bottom:1.2rem;"></div>
+      <div class="arsenal-pills">
+        <span class="ars-pill">MongoDB</span><span class="ars-pill">MySQL</span>
+      </div>
+    </div>
+    <div class="arsenal-card">
+      <div class="arsenal-label">Soft Skills</div>
+      <div style="height:1px;background:var(--border);margin-bottom:1.2rem;"></div>
+      <div class="arsenal-pills">
+        <span class="ars-pill">Problem-Solving</span><span class="ars-pill">Team Player</span>
+        <span class="ars-pill">Adaptability</span><span class="ars-pill">Time Management</span>
+      </div>
+    </div>
+    <div class="arsenal-card">
+      <div class="arsenal-label">CS Fundamentals</div>
+      <div style="height:1px;background:var(--border);margin-bottom:1.2rem;"></div>
+      <div class="arsenal-pills">
+        <span class="ars-pill">DSA</span><span class="ars-pill">OOP</span>
+        <span class="ars-pill">DBMS</span><span class="ars-pill">OS</span><span class="ars-pill">CN</span>
+      </div>
+    </div>
+    <div class="arsenal-card">
+      <div class="arsenal-label">Currently Learning</div>
+      <div style="height:1px;background:var(--border);margin-bottom:1.2rem;"></div>
+      <div class="arsenal-pills">
+        <span class="ars-pill">Full Stack Dev</span><span class="ars-pill">Cloud Computing</span>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 04 / PROJECTS -->
+<div class="section-wrap" id="projects" style="padding-top:0;">
+  <div class="sec-label">04 / PROJECTS</div>
+  <h2 class="sec-big-title">Featured <span class="italic">Work</span></h2>
+  <div class="sec-divider"></div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <span class="proj-num">01 / PROJECT</span>
+      <h3>Digital Invoice Generator</h3>
+      <div class="pills">
+        <span class="pill">React</span><span class="pill">Node.js</span>
+        <span class="pill neutral">HTML</span><span class="pill neutral">CSS</span>
+      </div>
+      <p>Full-stack app enabling users to create, edit, and manage professional invoices with automated PDF generation, real-time tax/discount calculations, and secure backend API + database storage.</p>
+      <a href="https://github.com/anjanakumari134" target="_blank" class="gh-link">View on GitHub →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-num">02 / PROJECT</span>
+      <h3>Question Paper Generator</h3>
+      <div class="pills">
+        <span class="pill neutral">HTML</span><span class="pill neutral">CSS</span><span class="pill">JavaScript</span>
+      </div>
+      <p>Automated question paper generator with smart randomization by difficulty, topic, and marks distribution. Clean responsive UI with real-time preview and secure data storage.</p>
+      <a href="https://github.com/anjanakumari134" target="_blank" class="gh-link">View on GitHub →</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- 05 / CERTIFICATES -->
+<div class="section-wrap" id="certs" style="padding-top:0;">
+  <div class="sec-label">05 / CERTIFICATES</div>
+  <h2 class="sec-big-title">Certifi<span class="italic">cations</span></h2>
+  <div class="sec-divider"></div>
+  <div class="cert-grid">
+    <div class="cert-item"><div class="cert-dot"></div><div><p>Cloud Computing</p><span>NPTEL &nbsp;·&nbsp; Apr 2025</span><a href="https://drive.google.com/file/d/1Eme2PegV2Jgc0WCrVeBtV3e4dPHOI1iV/view"></a></div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div><p>Computer Communications Specialization</p><span>Coursera &nbsp;·&nbsp; Nov 2024</span></div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div><p>The Bits and Bytes of Computer Networking</p><span>Google &nbsp;·&nbsp; Sep 2024</span></div></div>
+    <div class="cert-item"><div class="cert-dot"></div><div><p>Introduction to Hardware and Operating System</p><span>IBM &nbsp;·&nbsp; Sep 2024</span></div></div>
+  </div>
+</div>
+ 
+<!-- 06 / ACHIEVEMENTS -->
+<div class="section-wrap" id="achievements" style="padding-top:0;">
+  <div class="sec-label">06 / ACHIEVEMENTS</div>
+  <h2 class="sec-big-title">Wins &amp; <span class="italic">Milestones</span></h2>
+  <div class="sec-divider"></div>
+  <div class="wins-grid">
+    <div class="win-item">
+      <div class="win-icon">★</div>
+      <p>Earned a <strong style="color:var(--text);">4-Star rating on HackerRank</strong> in C++, demonstrating strong algorithmic and problem-solving skills.</p>
+    </div>
+    <div class="win-item">
+      <div class="win-icon">★</div>
+      <p>Solved <strong style="color:var(--text);">150+ questions</strong> across coding platforms like LeetCode and GeeksforGeeks, sharpening DSA skills consistently.</p>
+    </div>
+    <div class="win-item">
+      <div class="win-icon">★</div>
+      <p>Organized university <strong style="color:var(--text);">Hackathons</strong>, managing registrations, scheduling, and team coordination end-to-end.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- 07 / CONTACT -->
+<div class="section-wrap" id="contact" style="padding-top:0;">
+  <div class="sec-label">07 / CONTACT</div>
+  <h2 class="sec-big-title">Get In <span class="italic">Touch</span></h2>
+  <div class="sec-divider"></div>
+  <div class="contact-grid">
+    <a href="mailto:akanjanakumari8@gmail.com" class="contact-card">
+      <div class="cc-icon">Email</div>
+      <div class="cc-val">akanjanakumari8@gmail.com</div>
+      <div class="cc-label">Drop me a message</div>
+    </a>
+    <a href="http://www.linkedin.com/in/anjana0103/" target="_blank" class="contact-card">
+      <div class="cc-icon">LinkedIn</div>
+      <div class="cc-val">anjana0103</div>
+      <div class="cc-label">Let's connect professionally</div>
+    </a>
+    <a href="https://github.com/anjanakumari134" target="_blank" class="contact-card">
+      <div class="cc-icon">GitHub</div>
+      <div class="cc-val">anjanakumari134</div>
+      <div class="cc-label">Check out my code</div>
+    </a>
+    <a href="tel:+919690457855" class="contact-card">
+      <div class="cc-icon">Phone</div>
+      <div class="cc-val">+91 96904 57855</div>
+      <div class="cc-label">Available to talk</div>
+    </a>
+  </div>
+</div>
+ 
+<footer>
+  <span class="f-logo">AK</span>
+  <p>Anjana Kumari &copy; 2025 &mdash; Built with passion</p>
+</footer>
+ 
+<script>
+const btn = document.getElementById('themeBtn');
+const html = document.documentElement;
+btn.addEventListener('click', () => {
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  btn.textContent = isDark ? '☀️' : '🌙';
+});
+</script>
+</body>
+</html>
+ 
